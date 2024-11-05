@@ -1,0 +1,38 @@
+# # Specify the base branch and app folder
+# BASE_BRANCH="main"
+
+# # Get the current branch name
+# CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+
+# # Extract the app folder name (assumes the pattern is 'my-app/*')
+# APP_FOLDER=$(echo "$CURRENT_BRANCH" | cut -d'/' -f1)
+
+# # Fetch the latest changes from the base branch
+# git fetch origin $BASE_BRANCH
+
+# # Check if the app branch is up-to-date with the base branch
+# if ! git merge-base --is-ancestor origin/$BASE_BRANCH HEAD; then
+#   echo "Error: Your branch is not up-to-date with $BASE_BRANCH. Please pull or rebase first."
+#   exit 1
+# fi
+
+# # Check if there are any changes in the app-specific folder
+# APP_CHANGES=$(git diff --name-only HEAD -- $APP_FOLDER)
+
+# if [ -n "$APP_CHANGES" ]; then
+#   echo "Notice: Changes detected in the '$APP_FOLDER' folder:"
+#   echo "$APP_CHANGES"
+#   echo "Please review these app-specific changes to ensure they don't unintentionally impact shared code."
+  
+#   # Optionally, prompt to continue or abort
+#   read -p "Do you still want to proceed with the commit? (y/n) " choice
+#   if [ "$choice" != "y" ]; then
+#     echo "Commit aborted."
+#     exit 1
+#   fi
+# fi
+
+
+# # Proceed with the commit if all checks pass
+# echo "hehe"
+# # npm test
