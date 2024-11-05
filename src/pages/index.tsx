@@ -11,6 +11,7 @@ export default function Home() {
 			children={
 				<div>
 					<h2>{state}</h2>
+					<h3>{state}</h3>
 					<SayHelloComponent />
 					<hr />
 					<h2>{data}</h2>
