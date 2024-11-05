@@ -2,6 +2,12 @@
 # Specify the base branch and app folder
 BASE_BRANCH="main"
 
+# Check if a rebase is in progress
+if [ -d .git/rebase-apply ] || [ -d .git/rebase-merge ]; then
+  echo "Error: Rebasing is not allowed on this branch. Please use merge instead."
+  exit 1
+fi
+
 # Check if a merge (from base) is in progress
 if [ -f .git/MERGE_HEAD ]; then
   # Verify that the merge is coming from the base branch
@@ -9,7 +15,7 @@ if [ -f .git/MERGE_HEAD ]; then
   MERGE_COMMIT=$(git rev-parse MERGE_HEAD)
 
   if [ "$MERGE_COMMIT" != "$BASE_COMMIT" ]; then
-    echo "Error: Merge is not from the base branch ($BASE_BRANCH). Please ensure only $BASE_BRANCH is merged."
+    echo "Error: Merge is not from the base branch ($BASE_BRANCH). Please ensure only $BASE_BRANCH is merged into this branch."
     exit 1
   fi
 
@@ -28,7 +34,7 @@ git fetch origin $BASE_BRANCH
 
 # Check if the app branch is up-to-date with the base branch
 if ! git merge-base --is-ancestor origin/$BASE_BRANCH HEAD; then
-  echo "Error: Your branch is not up-to-date with $BASE_BRANCH. Please pull or rebase first."
+  echo "Error: Your branch is not up-to-date with $BASE_BRANCH. Please fetch and merge it into this branch first."
   exit 1
 fi
 
