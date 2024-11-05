@@ -23,6 +23,7 @@ export default function Home() {
 						beatae placeat tempora.
 					</div>
 					<p>hehe</p>
+					<p>hehe</p>
 				</div>
 			}
 		/>
