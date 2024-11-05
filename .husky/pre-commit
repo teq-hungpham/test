@@ -1,3 +1,9 @@
+# Check if a merge is in progress
+if [ -f .git/MERGE_HEAD ]; then
+  echo "Merge in progress; skipping checks."
+  exit 0
+fi
+
 # Specify the base branch and app folder
 BASE_BRANCH="main"
 
