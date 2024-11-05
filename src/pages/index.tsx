@@ -7,7 +7,7 @@ export default function Home() {
 
 	return (
 		<div
-			className=" bg-red-200 w-screen h-screen flex justify-center items-center"
+			className=" bg-red-100 w-screen h-screen flex justify-center items-center"
 			children={
 				<div>
 					<h2>{state}</h2>
@@ -15,6 +15,12 @@ export default function Home() {
 					<hr />
 					<h2>{data}</h2>
 					<F2SayHello />
+					<div>
+						Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni
+						perspiciatis, ipsum ex adipisci doloribus ut maxime quisquam illo
+						cumque quasi, debitis eaque! Nam dolorum laborum laudantium incidunt
+						beatae placeat tempora.
+					</div>
 				</div>
 			}
 		/>
