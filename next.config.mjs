@@ -10,8 +10,10 @@ function getBranch() {
 }
 
 function getFeatures() {
+	const currentBranch = getBranch();
 	const features = readdirSync("./src/features");
-	return features;
+
+	return features.filter((feature) => feature !== currentBranch);
 }
 
 function getEnv(config, webpack) {
