@@ -19,6 +19,12 @@ if [ -f .git/MERGE_HEAD ]; then
     exit 1
   fi
 
+  # Enforce --no-ff (no fast-forward) merges only
+  if git merge --ff-only --dry-run &>/dev/null; then
+    echo "Error: Fast-forward merge detected. Please use 'git merge --no-ff' to enforce a merge commit."
+    exit 1
+  fi
+
   echo "Merge from base branch ($BASE_BRANCH) detected; skipping further checks."
   exit 0
 fi
