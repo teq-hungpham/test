@@ -17,7 +17,7 @@ export default function Home() {
 					<h2>{data}</h2>
 					<F2SayHello />
 					<div>
-						1 Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni
+						2 Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni
 						perspiciatis, ipsum ex adipisci doloribus ut maxime quisquam illo
 						cumque quasi, debitis eaque! Nam dolorum laborum laudantium incidunt
 						beatae placeat tempora.
