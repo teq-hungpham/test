@@ -1,3 +1,7 @@
+
+# Specify the base branch and app folder
+BASE_BRANCH="main"
+
 # Check if a merge (from base) is in progress
 if [ -f .git/MERGE_HEAD ]; then
   # Verify that the merge is coming from the base branch
@@ -12,9 +16,6 @@ if [ -f .git/MERGE_HEAD ]; then
   echo "Merge from base branch ($BASE_BRANCH) detected; skipping further checks."
   exit 0
 fi
-
-# Specify the base branch and app folder
-BASE_BRANCH="main"
 
 # Get the current branch name
 CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
