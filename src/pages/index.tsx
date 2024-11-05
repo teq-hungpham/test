@@ -6,12 +6,17 @@ export default function Home() {
 	const { data } = useF2();
 
 	return (
-		<>
-			<h2>{state}</h2>
-			<SayHelloComponent />
-			<hr />
-			<h2>{data}</h2>
-			<F2SayHello />
-		</>
+		<div
+			className=" bg-red-200 w-screen h-screen flex justify-center items-center"
+			children={
+				<div>
+					<h2>{state}</h2>
+					<SayHelloComponent />
+					<hr />
+					<h2>{data}</h2>
+					<F2SayHello />
+				</div>
+			}
+		/>
 	);
 }
