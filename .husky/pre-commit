@@ -1,6 +1,15 @@
-# Check if a merge is in progress
+# Check if a merge (from base) is in progress
 if [ -f .git/MERGE_HEAD ]; then
-  echo "Merge in progress; skipping checks."
+  # Verify that the merge is coming from the base branch
+  BASE_COMMIT=$(git rev-parse origin/$BASE_BRANCH)
+  MERGE_COMMIT=$(git rev-parse MERGE_HEAD)
+
+  if [ "$MERGE_COMMIT" != "$BASE_COMMIT" ]; then
+    echo "Error: Merge is not from the base branch ($BASE_BRANCH). Please ensure only $BASE_BRANCH is merged."
+    exit 1
+  fi
+
+  echo "Merge from base branch ($BASE_BRANCH) detected; skipping further checks."
   exit 0
 fi
 
