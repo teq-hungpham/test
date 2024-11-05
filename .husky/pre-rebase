@@ -1,0 +1,15 @@
+# Define the base branch name
+BASE_BRANCH="main"
+
+# Get the name of the current branch (the one you're on when you start the rebase)
+CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+
+# Check if the current branch is the base branch
+if [ "$CURRENT_BRANCH" != "$BASE_BRANCH" ]; then
+  echo "Error: Rebasing is only allowed on the base branch ($BASE_BRANCH)."
+  echo "Please use 'git merge' instead to sync with $BASE_BRANCH."
+  exit 1
+fi
+
+# Allow rebase if on the base branch
+exit 0
