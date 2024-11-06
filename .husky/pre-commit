@@ -2,12 +2,6 @@
 # Specify the base branch and app folder
 BASE_BRANCH="main"
 
-# Check if a rebase is in progress
-if [ -d .git/rebase-apply ] || [ -d .git/rebase-merge ]; then
-  echo "Error: Rebasing is not allowed on this branch. Please use merge instead."
-  exit 1
-fi
-
 # Check if a merge (from base) is in progress
 if [ -f .git/MERGE_HEAD ]; then
   # Verify that the merge is coming from the base branch
@@ -16,12 +10,6 @@ if [ -f .git/MERGE_HEAD ]; then
 
   if [ "$MERGE_COMMIT" != "$BASE_COMMIT" ]; then
     echo "Error: Merge is not from the base branch ($BASE_BRANCH). Please ensure only $BASE_BRANCH is merged into this branch."
-    exit 1
-  fi
-
-  # Enforce --no-ff (no fast-forward) merges only
-  if git merge --ff-only --dry-run &>/dev/null; then
-    echo "Error: Fast-forward merge detected. Please use 'git merge --no-ff' to enforce a merge commit."
     exit 1
   fi
 
