@@ -10,6 +10,7 @@ export default function Home() {
 			className=" bg-red-100 w-screen h-screen flex justify-center items-center"
 			children={
 				<div>
+					<h1>{state}</h1>
 					<h2>{state}</h2>
 					<h3>{state}</h3>
 					<SayHelloComponent />
